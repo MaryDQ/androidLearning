@@ -49,8 +49,47 @@ class PullDownRefreshLayout @JvmOverloads constructor(
     }
 
 
-    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+        //垂直方向的滚动距离小于临界距离，表示接近初始页面。需要把工具栏和状态栏恢复原样
+        //否则表示页面正在上滑，需要给工具栏和状态栏变色
+        if (mScrollView?.scrollY!! <= mCriticalDistance) {
+            mListener?.pullDown(1.0 * mScrollView?.scaleY!! / mCriticalDistance)
+        } else {
+            mListener?.pullUp(1.0 * mScrollView?.scaleY!! / mCriticalDistance)
+        }
+        if (event?.rawY!! <= mOriginY) {
+            //正在上滑，不处理
+            return false
+        } else if (mScrollView?.scrollY!! > 0) {
+            //未上滑到顶部，不做处理
+            return false
+        } else if (mScrollView?.scrollY!! <= 0) {
+            //正在上滑到顶部以后，隐藏工具栏
+            mListener?.hideTitle()
+        }
+        var offsetY: Float = event.rawY - mOriginY - mCurrentHeight
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                mOriginY = event.rawY
+            }
+            MotionEvent.ACTION_MOVE -> {
+                //下拉刷新的实际距离减半,看起来不会太突兀
+                var dragOffset: Int = ((-1 + mLayoutHeight) + offsetY / 2).toInt()
+                mLinearLayout.setPadding(0, dragOffset, 0, 0)
+                mLinearLayout.invalidate()
+            }
+            MotionEvent.ACTION_UP -> {
+                //判断下拉的距离，如果太小，就恢复界面，否则就刷新界面
+                if (offsetY <= 400) {
+                    resumePage()
+                } else {
+                    mListener?.pullRefresh()
+                }
+            }
+        }
+
+
+        return true
     }
 
     override fun onScrolledToBottom() {
@@ -65,7 +104,7 @@ class PullDownRefreshLayout @JvmOverloads constructor(
     /***
      * 刷新完毕，恢复原页面
      */
-    fun finishRefresh(){
+    fun finishRefresh() {
         resumePage()
     }
 
@@ -74,7 +113,7 @@ class PullDownRefreshLayout @JvmOverloads constructor(
      */
     override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
         if (child is PullDownScrollView) {
-            mScrollView=child
+            mScrollView = child
             //设置触摸监听器，目的是监控拉动的距离
             mScrollView!!.setOnTouchListener(this)
             //设置滚动监听器，目的是判断是否拉到顶部或者拉到底部
@@ -86,8 +125,8 @@ class PullDownRefreshLayout @JvmOverloads constructor(
     /**
      * 恢复主页面
      */
-    private fun resumePage(){
-        mLinearLayout.setPadding(0,(-1*mLayoutHeight),0,0)
+    private fun resumePage() {
+        mLinearLayout.setPadding(0, (-1 * mLayoutHeight), 0, 0)
         //立刻刷新线性视图
         mLinearLayout.invalidate()
         mListener?.showTitle()
