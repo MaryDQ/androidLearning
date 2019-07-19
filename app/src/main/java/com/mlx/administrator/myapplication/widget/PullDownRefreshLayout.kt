@@ -3,7 +3,6 @@ package com.mlx.administrator.myapplication.widget
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -35,7 +34,7 @@ class PullDownRefreshLayout @JvmOverloads constructor(
 
     init {
         //出发工具栏变色的临界滑动距离
-        mCriticalDistance = 120
+        mCriticalDistance = Utils.dip2px(context, 40f)
         //获取默认的下拉刷新头布局
         mLinearLayout = LayoutInflater.from(mContext).inflate(R.layout.drag_drop_header, null) as LinearLayout
         //计算下拉刷新头部布局的高度
@@ -74,13 +73,13 @@ class PullDownRefreshLayout @JvmOverloads constructor(
             }
             MotionEvent.ACTION_MOVE -> {
                 //下拉刷新的实际距离减半,看起来不会太突兀
-                var dragOffset: Int = ((-1 + mLayoutHeight) + offsetY / 2).toInt()
+                var dragOffset: Int = ((-1 * mLayoutHeight) + offsetY / 2).toInt()
                 mLinearLayout.setPadding(0, dragOffset, 0, 0)
                 mLinearLayout.invalidate()
             }
             MotionEvent.ACTION_UP -> {
                 //判断下拉的距离，如果太小，就恢复界面，否则就刷新界面
-                if (offsetY <= 400) {
+                if (offsetY <= Utils.dip2px(context, 200f)) {
                     resumePage()
                 } else {
                     mListener?.pullRefresh()
