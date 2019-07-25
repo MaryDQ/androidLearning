@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="50dp">
+
+        <EditText
+                android:gravity="center"
+                android:text="1"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="1"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+                android:gravity="center"
+                android:text="1"
+                app:layout_constraintWidth_percent=".333"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/et9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="683dp"
+            tools:layout_editor_absoluteX="161dp" android:id="@+id/btnDoMatrix"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
