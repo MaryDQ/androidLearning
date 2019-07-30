@@ -10,28 +10,9 @@ import java.nio.FloatBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
-class LessonOneRender// X, Y, Z,
-// R, G, B, A
+class LessonOneRender : GLSurfaceView.Renderer {
 
-// Initialize the buffers.
-// X, Y, Z,
-// R, G, B, A
-
-// This triangle is white, gray, and black.
-// X, Y, Z,
-// R, G, B, A
-
-// This triangle is yellow, cyan, and magenta.
-/**
- * Initialize the model data.
- */
-
-// Define points for equilateral triangles.
-
-// This triangle is red, green, and blue.
-    () : GLSurfaceView.Renderer {
-
-    /** How many bytes per float.  */
+    /** 每个float有多少个字节.  */
     private val mBytesPerFloat = 4
 
     private val mTriangle1Vertices: FloatBuffer
@@ -56,6 +37,9 @@ class LessonOneRender// X, Y, Z,
     //存放矩阵模型，该矩阵用于将模型从对象空间（可以认为每个模型开始都位于宇宙的中心）移动到世界空间
     private val mModelMatrix = FloatArray(16)
 
+    /*
+    *   每当绘制新帧的时候被调用
+    * */
     override fun onDrawFrame(gl: GL10?) {
         GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT or GLES20.GL_COLOR_BUFFER_BIT)
 
@@ -77,8 +61,8 @@ class LessonOneRender// X, Y, Z,
 
         // Draw one translated a bit to the right and rotated to be facing to the left.
         Matrix.setIdentityM(mModelMatrix, 0)
-        Matrix.translateM(mModelMatrix, 0, 1.0f, 0.0f, 0.0f)
-        Matrix.rotateM(mModelMatrix, 0, 90.0f, 0.0f, 1.0f, 0.0f)
+        Matrix.translateM(mModelMatrix, 0, 0.0f, 1.0f, 0.0f)
+        Matrix.rotateM(mModelMatrix, 0, 90.0f, 1.0f, 0.0f, 0.0f)
         Matrix.rotateM(mModelMatrix, 0, angleDegrees, 0.0f, 0.0f, 1.0f)
         drawTriangle(mTriangle3Vertices)
     }
@@ -131,6 +115,9 @@ class LessonOneRender// X, Y, Z,
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 3)
     }
 
+    /*
+    * 每当界面改变时调用，例如：横屏切换到纵屏，界面刚被创建的时候
+    * */
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
         //设置OpenGl界面和当前视图相同的尺寸
         GLES20.glViewport(0, 0, width, height)
@@ -146,6 +133,9 @@ class LessonOneRender// X, Y, Z,
         Matrix.frustumM(mProjectionMatrix, 0, left, ratio, bottom, top, near, far)
     }
 
+    /*
+    * 界面第一次创建的时候会被调用，当我们失去上下文并且系统重新创建，也会被调用
+    * */
     override fun onSurfaceCreated(gl: GL10?, p1: EGLConfig?) {
         //设置GlSurfaceView为灰色背景
         GLES20.glClearColor(.5f, .5f, .5f, .5f)
@@ -292,7 +282,7 @@ class LessonOneRender// X, Y, Z,
 
         // Define points for equilateral triangles.
 
-        // This triangle is red, green, and blue.
+        // 这个三角形是由红色，蓝色，绿色的三个顶点组成
         val triangle1VerticesData = floatArrayOf(
             // X, Y, Z,
             // R, G, B, A
