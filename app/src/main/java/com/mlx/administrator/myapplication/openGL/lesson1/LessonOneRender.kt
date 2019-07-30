@@ -67,6 +67,20 @@ class LessonOneRender// X, Y, Z,
         Matrix.setIdentityM(mModelMatrix, 0)
         Matrix.rotateM(mModelMatrix, 0, angleDegrees, 0f, 0f, 1f)
         drawTriangle(mTriangle1Vertices)
+
+        // Draw one translated a bit down and rotated to be flat on the ground.
+        Matrix.setIdentityM(mModelMatrix, 0)
+        Matrix.translateM(mModelMatrix, 0, 0.0f, -1.0f, 0.0f)
+        Matrix.rotateM(mModelMatrix, 0, 90.0f, 1.0f, 0.0f, 0.0f)
+        Matrix.rotateM(mModelMatrix, 0, angleDegrees, 0.0f, 0.0f, 1.0f)
+        drawTriangle(mTriangle2Vertices)
+
+        // Draw one translated a bit to the right and rotated to be facing to the left.
+        Matrix.setIdentityM(mModelMatrix, 0)
+        Matrix.translateM(mModelMatrix, 0, 1.0f, 0.0f, 0.0f)
+        Matrix.rotateM(mModelMatrix, 0, 90.0f, 0.0f, 1.0f, 0.0f)
+        Matrix.rotateM(mModelMatrix, 0, angleDegrees, 0.0f, 0.0f, 1.0f)
+        drawTriangle(mTriangle3Vertices)
     }
 
     //为最终的组合矩阵分配存储空间，这将用来传入着色器程序
