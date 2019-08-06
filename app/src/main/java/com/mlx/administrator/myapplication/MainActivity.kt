@@ -3,6 +3,7 @@ package com.mlx.administrator.myapplication
 import android.opengl.Matrix
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_test_matrix.*
 
 class MainActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initData() {
         btnDoMatrix.setOnClickListener {
-
+            mpv.setMartixFromOut(matrix = getMatrix())
         }
     }
 }

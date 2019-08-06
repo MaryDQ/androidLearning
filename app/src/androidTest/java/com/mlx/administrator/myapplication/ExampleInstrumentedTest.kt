@@ -1,5 +1,9 @@
 package com.mlx.administrator.myapplication
 
+import android.app.Service
+import android.content.Context
+import android.content.Intent
+import android.os.IBinder
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 
@@ -20,5 +24,12 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.mlx.administrator.myapplication", appContext.packageName)
+    }
+
+    class UpdateService(private val context: Context) : Service() {
+        override fun onBind(intent: Intent?): IBinder {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
     }
 }

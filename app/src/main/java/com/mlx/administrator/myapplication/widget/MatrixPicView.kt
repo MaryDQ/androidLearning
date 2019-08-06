@@ -6,8 +6,6 @@ import android.util.AttributeSet
 import android.view.View
 
 
-
-
 class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr: AttributeSet? = null) :
     View(context, attr) {
     private var type = 0
@@ -25,9 +23,16 @@ class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr:
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         if (null != canvas) {
-            drawWithType(canvas)
+//            drawWithType(canvas)
+            canvas.matrix = mMatrix
+            canvas.drawBitmap(bitmap, 0f, 0f, paint)
         }
 
+    }
+
+    fun setMartixFromOut(matrix: Matrix) {
+        mMatrix = matrix
+        invalidate()
     }
 
     fun setAnimType(type: Int) {
@@ -77,7 +82,7 @@ class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr:
                 matrix2.setPolyToPoly(src2, 0, dst2, 0, src2.size shr 1)
 
                 val bMatrix2 = Bitmap.createBitmap(bitmap2, 0, 0, bitmap2.width, bitmap2.height, matrix2, true)
-                canvas.drawBitmap(bMatrix2,matrix2,paint)
+                canvas.drawBitmap(bMatrix2, matrix2, paint)
             }
             1 -> {
                 //先画一个蓝色的矩形
@@ -99,7 +104,7 @@ class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr:
                     2
                 )
 
-                canvas.setMatrix(mMatrix)
+                canvas.matrix = mMatrix
                 paint.color = Color.TRANSPARENT
                 //通过了setPolyToPoly的改变，再画一个红色矩形看有什么变化
                 canvas.drawRect(0f, 200f, 200f, 400f, paint)
