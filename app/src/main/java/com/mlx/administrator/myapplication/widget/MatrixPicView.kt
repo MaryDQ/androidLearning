@@ -3,11 +3,11 @@ package com.mlx.administrator.myapplication.widget
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.view.View
+import android.widget.FrameLayout
 
 
 class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr: AttributeSet? = null) :
-    View(context, attr) {
+    FrameLayout(context, attr) {
     private var type = 0
     private var paint: Paint = Paint()
     private var mMatrix = Matrix()
@@ -15,7 +15,7 @@ class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr:
         BitmapFactory.decodeResource(context.resources, com.mlx.administrator.myapplication.R.mipmap.ic_launcher)
 
     init {
-//        setImageBitmap(bitmap)
+//        setBackgroundResource(R.mipmap.ic_launcher)
 //        invalidate()
         setBackgroundColor(Color.BLACK)
     }
@@ -24,14 +24,22 @@ class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr:
         super.onDraw(canvas)
         if (null != canvas) {
 //            drawWithType(canvas)
-            canvas.matrix = mMatrix
-            canvas.drawBitmap(bitmap, 0f, 0f, paint)
+//            canvas.setMatrix(mMatrix)
+//            canvas.drawBitmap(bitmap, 0f, 0f, paint)
         }
 
     }
 
     fun setMartixFromOut(matrix: Matrix) {
         mMatrix = matrix
+
+        invalidate()
+    }
+
+
+    fun setMatrixValues(array: FloatArray) {
+        this.translationX = array[5]
+//        this.matrix.setValues(array)
         invalidate()
     }
 
@@ -104,7 +112,7 @@ class MatrixPicView @kotlin.jvm.JvmOverloads constructor(context: Context, attr:
                     2
                 )
 
-                canvas.matrix = mMatrix
+                canvas.setMatrix(mMatrix)
                 paint.color = Color.TRANSPARENT
                 //通过了setPolyToPoly的改变，再画一个红色矩形看有什么变化
                 canvas.drawRect(0f, 200f, 200f, 400f, paint)
