@@ -1,7 +1,10 @@
 package com.mlx.administrator.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.CameraX
+import com.mlx.administrator.myapplication.camera_x.CameraXActivity
 import kotlinx.android.synthetic.main.activity_test_matrix.*
 
 class MainActivity : AppCompatActivity() {
@@ -61,7 +64,8 @@ class MainActivity : AppCompatActivity() {
     private fun initData() {
         btnDoMatrix.setOnClickListener {
             //            mpv.setMartixFromOut(matrix = getMatrix())
-            mpv.setMatrixValues(getFloatValues())
+//            mpv.setMatrixValues(getFloatValues())
+            startActivity(Intent(this,CameraXActivity::class.java))
         }
     }
 }
