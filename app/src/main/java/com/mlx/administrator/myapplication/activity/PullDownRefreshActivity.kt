@@ -3,7 +3,6 @@ package com.mlx.administrator.myapplication.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mlx.administrator.myapplication.R
-import kotlinx.android.synthetic.main.activity_test.*
 
 class PullDownRefreshActivity : AppCompatActivity() {
 
@@ -14,11 +13,11 @@ class PullDownRefreshActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-        btnConfirm.setOnClickListener {
-            if (etType.text.toString().isNotEmpty()) {
-                mpvPic.setAnimType(etType.text.toString().toInt())
-            }
-        }
+//        btnConfirm.setOnClickListener {
+//            if (etType.text.toString().isNotEmpty()) {
+//                mpvPic.setAnimType(etType.text.toString().toInt())
+//            }
+//        }
 
     }
 }

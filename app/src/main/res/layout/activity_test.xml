@@ -5,26 +5,31 @@
                 android:layout_height="match_parent">
 
 
-    <com.mlx.administrator.myapplication.widget.MatrixPicView
-            android:id="@+id/mpvPic"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"/>
+    <!--<com.mlx.administrator.myapplication.widget.MatrixPicView-->
+            <!--android:id="@+id/mpvPic"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="400dp"/>-->
 
 
-    <EditText
-            android:layout_centerVertical="true"
-            android:inputType="number"
-            android:id="@+id/etType"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+    <!--<EditText-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:inputType="number"-->
+            <!--android:id="@+id/etType"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"/>-->
 
 
-    <Button
-            android:id="@+id/btnConfirm"
-            android:text="确定"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+    <!--<Button-->
+            <!--android:id="@+id/btnConfirm"-->
+            <!--android:text="确定"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"/>-->
 
+
+    <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="200dp"
+            android:layout_height="100dp"/>
 
 </RelativeLayout>

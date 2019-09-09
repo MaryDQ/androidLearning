@@ -3,7 +3,6 @@ package com.mlx.administrator.myapplication.camera_x
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Matrix
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
@@ -15,6 +14,7 @@ import android.view.TextureView
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -41,7 +41,7 @@ class CameraXActivity : AppCompatActivity() {
         // Create configuration object for the viewfinder use case
         val previewConfig = PreviewConfig.Builder().apply {
             setTargetAspectRatio(Rational(1, 1))
-            setTargetResolution(Size(640, 640))
+            setTargetResolution(Size(1080, 1920))
         }.build()
 
         //Build the viewfinder user case
@@ -118,7 +118,7 @@ class CameraXActivity : AppCompatActivity() {
         //Correct preview output to account for display rotation
         val rotationDegrees = when (viewFinder.display.rotation) {
             Surface.ROTATION_0 -> 0
-            Surface.ROTATION_90 -> 0
+            Surface.ROTATION_90 -> 90
             Surface.ROTATION_180 -> 180
             Surface.ROTATION_270 -> 270
             else -> return

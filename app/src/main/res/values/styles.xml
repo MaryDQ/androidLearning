@@ -9,4 +9,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="buttonStyle">
+        <item name="android:textColor">#ff00</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>
