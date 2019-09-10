@@ -26,32 +26,40 @@ class MainActivity : AppCompatActivity() {
 
     private var list = ArrayList<String>()
 
-    private var mAdapter: AbstractSimpleAdapter<String>?=null
+    private var mAdapter: AbstractSimpleAdapter<String>? = null
     private fun initData() {
         list.add("0")
 
         mAdapter = object : AbstractSimpleAdapter<String>(this, list, R.layout.item_phone_detail_item) {
             override fun onBindViewHolder(holder: ViewHolder?, data: String?, curPosition: Int) {
-                holder!!.getView<TextView>(R.id.tvName).text=data
+                holder!!.getView<TextView>(R.id.tvName).text = data
             }
         }
 
-        rvTest.layoutManager=LinearLayoutManager(this)
-        rvTest.adapter=mAdapter
+        rvTest.layoutManager = LinearLayoutManager(this)
+        rvTest.adapter = mAdapter
 
         initTimer()
+
+        btnAddOnePercent.setOnClickListener {
+//            i += 0.01f
+//            cbv.setRatio(i)
+//            btnAddOnePercent.text = "$i"
+        }
     }
+
+    private var i = 0.01f
 
     private fun initTimer() {
         scheduledExecutorService.scheduleAtFixedRate({
-            Log.e("dididi","${Thread.currentThread()}")
+            Log.e("dididi", "${Thread.currentThread()}")
             try {
-                list[0]=(list[0].toInt()+1).toString()
+                list[0] = (list[0].toInt() + 1).toString()
                 Handler(Looper.getMainLooper()).post {
                     mAdapter?.notifyItemChanged(0)
                 }
             } catch (e: Exception) {
-                Log.e("dididi","error:${e.message}")
+                Log.e("dididi", "error:${e.message}")
             }
         }, 1, 1L, TimeUnit.SECONDS)
     }

@@ -15,11 +15,12 @@ import com.mlx.administrator.myapplication.R
 
 class NfcActivity : AppCompatActivity() {
 
-    val TAG = "NfcActivity"
+    val TAG = "NfcActivity001"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nfc)
+        initNfc()
     }
 
     var mNfcAdapter: NfcAdapter? = null

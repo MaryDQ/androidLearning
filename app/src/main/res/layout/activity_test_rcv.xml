@@ -6,9 +6,20 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTest"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.mlx.administrator.myapplication.widget.QuadBezierView
+            android:id="@+id/cbv"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"/>
+
+    <Button
+            android:id="@+id/btnAddOnePercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>
