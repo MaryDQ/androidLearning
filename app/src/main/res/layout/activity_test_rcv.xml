@@ -14,8 +14,13 @@
 
     <com.mlx.administrator.myapplication.widget.QuadBezierView
             android:id="@+id/cbv"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="500dp"/>
+
+    <com.mlx.administrator.myapplication.widget.SignatureView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
 
     <Button
             android:id="@+id/btnAddOnePercent"

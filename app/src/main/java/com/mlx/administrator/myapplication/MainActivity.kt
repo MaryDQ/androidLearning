@@ -1,5 +1,8 @@
 package com.mlx.administrator.myapplication
 
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -42,24 +45,38 @@ class MainActivity : AppCompatActivity() {
         initTimer()
 
         btnAddOnePercent.setOnClickListener {
-//            i += 0.01f
-//            cbv.setRatio(i)
-//            btnAddOnePercent.text = "$i"
+            downSomething(qqUrl)
         }
+    }
+
+    private var wangzheUrl="https://718e31e8894454e98bf531c997f4e6fb.dd.cdntips.com/imtt.dd.qq.com/16891/apk/306C22A4972B3883976938ED066EDB74.apk?mkey=5d842661b79ed625&f=8935&fsname=com.tencent.tmgp.sgame_1.46.1.18_46011805.apk&csr=1bbd&cip=183.158.240.208&proto=https";
+    private val qqUrl="https://eaac524d22b5efded110a28fee901a58.dd.cdntips.com/imtt.dd.qq.com/16891/apk/ADE42BB02016AD9B4E9CCAD6C2DF030A.apk?mkey=5d8424dcb79ed625&f=1806&fsname=com.tencent.mobileqq_8.1.5_1258.apk&csr=1bbd&cip=183.158.240.208&proto=https"
+
+    private fun downSomething(downUrl:String){
+        var downloadManager=getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        var resource= Uri.parse(downUrl)
+
+        var request=DownloadManager.Request(resource)
+        request.setDestinationInExternalPublicDir("Download","nihao.apk")
+
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE and DownloadManager.Request.NETWORK_WIFI)
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+        request.setTitle("测试下载中")
+        request.setVisibleInDownloadsUi(true)
+
+        downloadManager.enqueue(request)
     }
 
     private var i = 0.01f
 
     private fun initTimer() {
         scheduledExecutorService.scheduleAtFixedRate({
-            Log.e("dididi", "${Thread.currentThread()}")
             try {
                 list[0] = (list[0].toInt() + 1).toString()
                 Handler(Looper.getMainLooper()).post {
                     mAdapter?.notifyItemChanged(0)
                 }
             } catch (e: Exception) {
-                Log.e("dididi", "error:${e.message}")
             }
         }, 1, 1L, TimeUnit.SECONDS)
     }
