@@ -2,6 +2,7 @@ package com.mlx.administrator.myapplication
 
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -10,6 +11,8 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mlx.administrator.myapplication.openGL.lesson1.TestOpenGLGlobalActivity
+import com.mlx.administrator.myapplication.openGL.lesson1.TestOpenGlActivity
 import com.mlx.administrator.myapplication.recycler.AbstractSimpleAdapter
 import com.mlx.administrator.myapplication.recycler.ViewHolder
 import kotlinx.android.synthetic.main.activity_test_rcv.*
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         initTimer()
 
         btnAddOnePercent.setOnClickListener {
-            downSomething(qqUrl)
+            startActivity(Intent(this,TestOpenGLGlobalActivity::class.java))
         }
     }
 

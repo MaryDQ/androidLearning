@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.mlx.administrator.myapplication">
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.mlx.administrator.myapplication">
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-feature
-            android:glEsVersion="0x00020000"
-            android:required="true"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- <uses-feature -->
+    <!-- android:glEsVersion="0x00020000" -->
+    <!-- android:required="true" /> -->
     <uses-feature
             android:name="android.hardware.nfc"
-            android:required="true"/>
+            android:required="true" />
 
-    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
             android:allowBackup="true"
@@ -26,33 +24,33 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".openGL.lesson1.TestOpenGLGlobalActivity"></activity>
+        <activity android:name=".openGL.lesson1.TestOpenGlActivity" />
         <activity android:name=".nfc.NfcActivity">
             <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
             </intent-filter>
+
             <meta-data
                     android:name="android.nfc.action.TECH_DISCOVERED"
-                    android:resource="@xml/nfc_tech_filter"
-                    />
+                    android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".camera_x.CameraXActivity">
-        </activity>
-        <activity android:name=".openGL.lesson1.LessonOneActivity">
-        </activity>
-        <activity android:name=".activity.PullDownRefreshActivity">
-        </activity>
+        <activity android:name=".camera_x.CameraXActivity" />
+        <activity android:name=".openGL.lesson1.LessonOneActivity" />
+        <activity android:name=".activity.PullDownRefreshActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
